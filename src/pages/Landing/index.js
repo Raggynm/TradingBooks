@@ -10,7 +10,7 @@ import facebookIcon from '../../assets/facebook_icon1.png'
 function Landing() {
     return (
         <View style={styles.container}>
-            <Text style={styles.logo}>Trading Books</Text>
+            <Text adjustsFontSizeToFit style={styles.logo}>Trading Books</Text>
             <Text style={styles.line}/>
         
             <TouchableOpacity style={styles.button}>

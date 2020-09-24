@@ -12,7 +12,7 @@ export const Styles = StyleSheet.create({
 
     logo: {
         fontFamily:'RedHatDisplay_400Regular',
-        fontSize: 72,
+        fontSize: 32,
         marginTop: 80,
         marginBottom:48,
         color: '#fff'
