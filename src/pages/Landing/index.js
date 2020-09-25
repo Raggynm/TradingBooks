@@ -1,13 +1,24 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
 function Landing() {
+    const { navigate } = useNavigation();
+
+    function handleNavigationToLoginPage(){
+        navigate('Login');
+    }
+
+    function handleNavigationSignUpPage(){
+        navigate('SignUp')
+    }
+
     return (
         <View style={styles.container}>
-            <Text adjustsFontSizeToFit style={styles.logo}>Trading Books</Text>
+            <Text style={styles.logo}>Trading Books</Text>
             <Text style={styles.line} />
 
             <View style={styles.containerButtons}>
@@ -50,10 +61,16 @@ function Landing() {
             <Text style={styles.line2} />
 
             <View style={styles.bottomContainer}>
-                <TouchableOpacity style={styles.buttonWoutBackground}>
+                <TouchableOpacity
+                onPress={handleNavigationSignUpPage} 
+                style={styles.buttonWoutBackground}>
                     <Text style={styles.textButtonb2}>Cadastre-se</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonWoutBackground}>
+                
+                <TouchableOpacity 
+                onPress={handleNavigationToLoginPage} 
+                style={styles.buttonWoutBackground}
+                >
                     <Text style={styles.textButtonb2}>Entre aqui</Text>
                 </TouchableOpacity>
             </View>

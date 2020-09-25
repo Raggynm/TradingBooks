@@ -14,12 +14,12 @@ export const Styles = StyleSheet.create({
         fontFamily: 'RedHatDisplay_400Regular',
         fontSize: 40,
         marginTop: 80,
-        marginBottom: 48,
+        marginBottom: 5,
         color: '#fff'
     },
 
     line: {
-        marginBottom: 123,
+        marginBottom: 80,
         paddingLeft: 300,
         borderBottomColor: '#fff',
         borderBottomWidth: 3,
@@ -67,7 +67,7 @@ export const Styles = StyleSheet.create({
     },
 
     line2: {
-        marginTop: 144,
+        marginTop: 80,
         paddingLeft: 300,
         borderBottomColor: '#fff',
         borderBottomWidth: 3,
@@ -78,7 +78,8 @@ export const Styles = StyleSheet.create({
     },
 
     textButtonb2: {
-        fontSize: 16,
+        fontFamily: 'RedHatDisplay_500Medium',
+        fontSize: 17,
         color: "#FFF"
     },
 
