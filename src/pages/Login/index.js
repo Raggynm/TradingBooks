@@ -1,15 +1,24 @@
 import React,{useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import InputField from '../../components/InputField'
 
 import styles from './styles';
 
 function Login() {
 
-    const [email, setEmail]=useState("");
-    const [senha, setSenha]=useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const { navigate } = useNavigation();
+
+    const handleEmail = (text) => {
+        setEmail(text);
+    }
+
+    const handlePassword = (text) => {
+        setPassword(text);
+    }
 
     function handleNavigationSignUpPage(){
         navigate('SignUp')
@@ -17,29 +26,14 @@ function Login() {
 
     return (
         < View style={styles.container}>
-             <Text style={styles.title}>login</Text>
-             <Text style={styles.line} />
+            <Text style={styles.title}>login</Text>
+            <Text style={styles.line} />
         
-            <View style={styles.field}>
-                <TextInput 
-                style={styles.input}
-                value={email}
-                onChangeText={text=>setEmail(text)} 
-                keyboardType="email-address"
-                />
-            </View>
-            <Text style={styles.TitleField}>Email</Text>
-            
-            <View style={styles.field}>
-                <TextInput 
-                style={styles.input}
-                value={senha}
-                onChangeText={text=>setSenha(text)}
-                secureTextEntry={true}
 
-                />
-            </View>
-            <Text style={styles.TitleField}>Senha</Text>
+            <InputField value={email} handler={handleEmail} type="email-address" label="Email" secure={false}/>
+
+            <InputField value={password} handler={handlePassword} label="Senha" secure={true}/>
+            
             
             <Text style={styles.remenber}>Esqueceu sua senha ? </Text>
             
