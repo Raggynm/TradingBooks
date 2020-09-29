@@ -12,10 +12,10 @@ export const Styles = StyleSheet.create({
 
     },
     
-    login: {
+    title: {
         fontFamily: 'RedHatDisplay_400Regular',
         fontSize: 36,
-        marginTop:150,
+        marginTop:100,
         marginRight:210,
         color: '#fff'
     },
@@ -45,16 +45,21 @@ export const Styles = StyleSheet.create({
 
     input: {
         backgroundColor: '#811331',
+        color:'#fff',
         padding: 20,
         width: 300,
         borderRadius: 10,
     },
 
+    inputStyle: { 
+        color: '#fff',
+},
+
     remenber: {
         color: '#fff',
         marginTop: 20,
         marginLeft: 150,
-        marginBottom: 60,
+        marginBottom: 114,
     },
 
     button: {
@@ -85,8 +90,7 @@ export const Styles = StyleSheet.create({
         color: '#fff',
         marginTop: 30,
         marginBottom: 60,
-},
-    
+    },    
 });
 
 export default Styles;
