@@ -4,16 +4,16 @@ import { StyleSheet } from 'react-native';
 export const Styles = StyleSheet.create({
 
 field: {
-    alignItems: 'center',
-    marginTop: 30,
+    marginTop: 20,
 },
 
 
 TitleField: {
+    alignSelf: 'flex-start',
     color: '#D11749',
-    marginTop: -60,
+    marginTop: -58,
     marginBottom:40,
-    marginRight:200,
+    marginLeft:45,
 
 },
 
@@ -21,7 +21,7 @@ TitleField: {
 input: {
     backgroundColor: '#811331',
     color:'#fff',
-    padding: 20,
+    padding: 15,
     width: 300,
     borderRadius: 10,
 },

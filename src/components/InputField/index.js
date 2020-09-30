@@ -6,9 +6,9 @@ const InputField = (props) => {
 
     return (
         <React.Fragment>
-            <View style={styles.field}>
+            <View style={styles.field} > 
                 <TextInput
-                    style={styles.input}
+                    style={styles.input} 
                     value={props.value}
                     onChangeText={props.handler}
                     keyboardType={props.type}
