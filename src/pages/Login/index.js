@@ -24,6 +24,10 @@ function Login() {
         navigate('SignUp')
     }
 
+    function handleNavigationHomePage(){
+        navigate('Home')
+    }
+
     return (
         < View style={styles.container}>
             <Text style={styles.title}>login</Text>
@@ -37,7 +41,9 @@ function Login() {
             
             <Text style={styles.remenber}>Esqueceu sua senha ? </Text>
             
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+                            onPress={handleNavigationHomePage}
+            style={styles.button}>
                 <Text style={styles.buttonText}>Entrar</Text>
             </TouchableOpacity>
 
