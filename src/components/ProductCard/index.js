@@ -1,22 +1,30 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import styles from './styles';
 
 const ProductCard = (props) => {
 
+    const { navigate } = useNavigation();
+    
+    function handleNavigationProductPage(){
+        navigate('ProductPage')
+    }
+
     return (
-        <View style={styles.border}>
-            <View style={{ flex: 2 }}>
-                <Image
-                    source={props.image}
-                    style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }} />
+        <TouchableOpacity onPress={handleNavigationProductPage}>    
+        <View style={styles.border} >
+            <View style={{flex: 2}}>
+                    <Image
+                        source={props.image}
+                        style={styles.img} />
             </View>
-            <View style={{ flex: 1 }}>
-                <Text>{props.title}</Text>
-                <Text>{props.price}</Text>
-                <Text>{props.type}</Text>
+            <View style={{flex: 1}}>
+                <Text style={styles.texTitle} >{props.title}</Text>
+                <Text style={styles.textPrince} >{props.price}</Text>
             </View>
         </View>
+        </TouchableOpacity>
     )
 }
 

@@ -5,6 +5,7 @@ import { createStackNavigator} from '@react-navigation/stack';
 import Landing from'../pages/Landing';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
+import ProductPage from '../pages/ProductPage';
 import NaviTab from './NaviTab';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -16,6 +17,7 @@ export default function AppStack() {
                 <Screen name="Landing" component={Landing} />
                 <Screen name="Login" component={Login} />
                 <Screen name="SignUp" component={SignUp} />
+                <Screen name="ProductPage" component={ProductPage} />
                 <Screen name="Home" component={NaviTab} />
             </Navigator>
         </NavigationContainer>

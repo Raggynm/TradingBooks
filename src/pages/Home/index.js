@@ -4,41 +4,36 @@ import { AntDesign } from '@expo/vector-icons'
 
 import styles from './styles';
 
-import book from '../../assets/Livro.png';
+import book from '../../assets/book.png';
 
-import Card from '../../components/ProductCard'
+import Card from '../../components/ProductCard';
 
 function Home() {
 
     const [list, setList] = React.useState([
         {
             title: "Titulo",
-            type: "Troca",
-            price: 30,
+            price: "Valor ou Troca",
             image: book
         },
         {
             title: "Titulo",
-            type: "Troca",
-            price: 50,
+            price: "Valor ou Troca",
             image: book
         },
         {
             title: "Titulo",
-            type: "Troca",
-            price: 50,
+            price: "Valor ou Troca",
             image: book
         },
         {
             title: "Titulo",
-            type: "Troca",
-            price: 50,
+            price: "Valor ou Troca",
             image: book
         },
         {
             title: "Titulo",
-            type: "Troca",
-            price: 50,
+            price: "Valor ou Troca",
             image: book
         },
     ])
@@ -76,7 +71,7 @@ function Home() {
                     </View>
                 </View>
 
-                <View style={{ flex: 1, paddingTop: 20 }} >
+                <View style={{ flex: 1, paddingTop: 5 }} >
                     <Text style={styles.title}>
                         Perto de você
                     </Text>

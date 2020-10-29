@@ -9,15 +9,38 @@ export const Styles = StyleSheet.create({
         fontFamily: 'RedHatDisplay_400Regular',
         color: '#D11749'
     },
+    
+    img: {
+        flex: 1, 
+        width: null, 
+        height: null, 
+        resizeMode: 'cover',
+        backgroundColor: '#fff',
+        borderRadius: 19,
+    },
 
     border: {
         height: 180,
         width: 120,
         marginLeft: 20,
+        marginBottom:30,
         borderWidth: 0.5,
-        borderRadius: 30,
-        borderColor: '#dddd'
+        borderRadius: 20,
+        borderColor: '#dddd', 
+        backgroundColor: '#D11749',
     },
+
+    texTitle: {
+        fontSize: 20,
+        color:'#fff',
+        paddingHorizontal: 10,
+        marginTop:5,
+    },
+
+    textPrince: {
+        color:'#fff',
+        paddingHorizontal: 10,
+    }
 
 })
 
