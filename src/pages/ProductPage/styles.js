@@ -20,9 +20,8 @@ export const Styles = StyleSheet.create({
         backgroundColor: '#D11749',
         alignItems:'center',
         marginTop: 30,
-        borderWidth: 0.5, 
-        borderTopEndRadius: 50,
-        borderTopStartRadius: 50,
+        borderTopEndRadius: 100,
+        borderTopLeftRadius: 100,
         borderColor:'#D11749',
 
     },
@@ -101,7 +100,7 @@ export const Styles = StyleSheet.create({
 
     whatsapp: {
         marginLeft:10,
-        marginTop: 3,
+        marginTop: 10,
 
     },
 

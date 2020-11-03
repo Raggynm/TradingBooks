@@ -31,7 +31,7 @@ export const Styles = StyleSheet.create({
     },
 
     texTitle: {
-        fontSize: 20,
+        fontSize: 16,
         color:'#fff',
         paddingHorizontal: 10,
         marginTop:5,
@@ -40,6 +40,7 @@ export const Styles = StyleSheet.create({
     textPrince: {
         color:'#fff',
         paddingHorizontal: 10,
+        height: 18
     }
 
 })

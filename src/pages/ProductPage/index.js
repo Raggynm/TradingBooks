@@ -26,7 +26,7 @@ function Landing() {
                         source={require('../../assets/Perfil1.png')} />
                         <Text style={styles.storeTitle}>Nome da Loja</Text>
                         <TouchableOpacity style={styles.contactButton}>
-                        <Text style={styles.contactTitle}>Menssagem</Text>
+                        <Text style={styles.contactTitle}>Mensagem</Text>
                         <FontAwesome style={styles.whatsapp} name="whatsapp" size={20} color="white" />
                         </TouchableOpacity>
                     </View>

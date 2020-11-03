@@ -39,25 +39,28 @@ function MyMarket() {
     ])
 
     return (
-            <ScrollView>
-                <View style={{ backgroundColor: '#D11749',}}>
-                    <View style={styles.header}>
-                        <Image style={styles.perfilImg} 
+        <ScrollView>
+            <View style={{ backgroundColor: '#D11749', }}>
+                <View style={styles.header}>
+                    <Image style={styles.perfilImg}
                         source={require('../../assets/Perfil1.png')} />
-                        <Text style={styles.marketTitle}>Nome da Loja</Text>
-                        <Text style={styles.description}>Descrição da Loja </Text>
-                        <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et</Text>
+                    <Text style={styles.marketTitle}>Nome da Loja</Text>
+                    <Text style={styles.description}>Descrição da Loja </Text>
+                    <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et</Text>
+                </View>
+                <View style={styles.productContainer}>
+                    <Text style={styles.productTitle}>Produtos</Text>
+                    <View>
+                        
                     </View>
-                    <View style={styles.productContainer}>
-                        <Text style={styles.productTitle}>Produtos</Text>
-                        <View style={styles.productAlign}>    
-                        {list.map((product) => {
-                            return <Card title={product.title} type={product.type} price={product.price} image={product.image} />
+                    <View style={styles.productAlign}>
+                        {list.map((product, key) => {
+                            return <Card key={key} title={product.title} type={product.type} price={product.price} image={product.image} />
                         })}
-                        </View>
                     </View>
-                </View> 
-            </ScrollView>
+                </View>
+            </View>
+        </ScrollView>
 
     );
 }

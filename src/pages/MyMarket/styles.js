@@ -36,6 +36,7 @@ export const Styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems:'center',
+        justifyContent: "center",
         marginTop: 30,
         borderWidth: 0.5, 
         borderTopEndRadius: 30,
@@ -52,9 +53,11 @@ export const Styles = StyleSheet.create({
     },
 
     productAlign: {
+        justifyContent: "flex-start",
+        alignItems: "center",
         flexDirection: 'row',
         flexWrap:'wrap',
-        paddingHorizontal:30,
+        marginLeft: 50
     },
 
 
