@@ -32,8 +32,40 @@ export const styles = StyleSheet.create({
         paddingHorizontal:45,
         color: '#eee',
     },
+
+    infoContainer: {
+        width: "100%",
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+    },
+
+    infoItem: {
+        alignItems: "center",
+        margin: 10,
+    },
+
+    infoText: {
+        fontFamily: 'RedHatDisplay_500Medium',
+        fontSize: 15,
+    },
+
+    buttonInfo: {
+        flex: 1,
+       
+        flexDirection: "row",
+        backgroundColor: "#f0f0f0",
+    },
+
+    buttonInfoView: {
+    },
+
+    info: {
+        fontFamily: 'RedHatDisplay_500Medium',
+        fontSize: 20,
+    },
     
-    productContainer: {
+    profileContainer: {
         flex: 1,
         backgroundColor: '#fff',
         alignItems:'center',

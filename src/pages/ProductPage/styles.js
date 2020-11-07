@@ -1,18 +1,23 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const Styles = StyleSheet.create({
 
 
     header: {
-        flex: 1,
         alignItems:'center',
+        justifyContent: "center",
+        position: "absolute",
+        zIndex: -1,
+        top: 0,
+        right: 0,
+        left: 0
     },
     productImg:{
         marginTop: 80,
-        width: 260, 
-        height: 260, 
-        resizeMode: 'cover' ,
+        alignSelf: "center",
+        width: Math.round(Dimensions.get('window').width), 
+        height: Math.round(Dimensions.get('window').width)
     },
  
     body: {
