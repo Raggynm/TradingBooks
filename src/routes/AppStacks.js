@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import ProductPage from '../pages/ProductPage';
 import NaviTab from './NaviTab';
+import GraphVis from '../pages/Graph';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function AppStack() {
                 <Screen name="SignUp" component={SignUp} />
                 <Screen name="ProductPage" component={ProductPage} />
                 <Screen name="Home" component={NaviTab} />
+                <Screen name="Graph" component={GraphVis} />
             </Navigator>
         </NavigationContainer>
     )

@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons'
 import Home from '../pages/Home';
 import MyMarket from '../pages/MyMarket';
 import UserProfile from '../pages/UserProfile';
+import GraphVis from '../pages/Graph';
 
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -78,6 +79,23 @@ function NaviTab() {
             <Screen
                 name="UserProfile"
                 component={UserProfile}
+                options={{
+                    tabBarLabel: '',
+                    tabBarIcon: ({ color, size }) => {
+                        return (
+                            < AntDesign
+                                name="user"
+                                size={size}
+                                color={color}
+                            />
+                        );
+                    }
+                }}
+            />
+
+<Screen
+                name="Graph"
+                component={GraphVis}
                 options={{
                     tabBarLabel: '',
                     tabBarIcon: ({ color, size }) => {
