@@ -5,7 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import styles from './styles';
 
-function Landing() {
+function ProductPage() {
 
     const [image, setImage] = useState(require('../../assets/book.png'))
 
@@ -41,8 +41,7 @@ function Landing() {
                             source={require('../../assets/Perfil1.png')} />
                         <Text style={styles.storeTitle}>Nome da Loja</Text>
                         <TouchableOpacity style={styles.contactButton}>
-                            <Text style={styles.contactTitle}>Mensagem</Text>
-                            <FontAwesome style={styles.whatsapp} name="whatsapp" size={20} color="white" />
+                            <Text style={styles.contactTitle}>Comprar</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -52,4 +51,4 @@ function Landing() {
 }
 
 
-export default Landing;
+export default ProductPage;

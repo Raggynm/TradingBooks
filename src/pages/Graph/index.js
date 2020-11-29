@@ -15,7 +15,7 @@ function GraphVis(){
       "1":[2,4], //node at index 1 is connected to nodes at index 2 and 4 respectively.
       "2":[6,7] //node at index 2 is connected to nodes at index 6 and 7 respectively.
     };
-    let circleTitles = ['Grhamm','C2', 'C3', 'C4', 'C5','C6', 'C7', 'C8', 'C9'];
+    let circleTitles = ['Grhamm','Gean', 'João', 'Vagner', 'Soussa','Hernas', 'Lapa', 'Ana', 'Maria'];
     return (
       <View style={styles.container}>
         <NetworkGraph
