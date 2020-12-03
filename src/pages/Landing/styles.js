@@ -19,7 +19,6 @@ export const Styles = StyleSheet.create({
     },
 
     line: {
-        marginBottom: 80,
         paddingLeft: 300,
         borderBottomColor: '#fff',
         borderBottomWidth: 3,
@@ -79,7 +78,7 @@ export const Styles = StyleSheet.create({
 
     textButtonb2: {
         fontFamily: 'RedHatDisplay_500Medium',
-        fontSize: 17,
+        fontSize: 40,
         color: "#FFF"
     },
 
@@ -95,10 +94,10 @@ export const Styles = StyleSheet.create({
 
     bottomContainer: {
         flex: 1,
-        flexDirection: "row",
+        flexDirection: "column",
         height: 50,
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-evenly"
     }
 
 });
