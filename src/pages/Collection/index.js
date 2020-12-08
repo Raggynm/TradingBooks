@@ -1,79 +1,49 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
-import book from '../../assets/book.png'
-import SelectMultiple from 'react-native-select-multiple'
+import React, { useEffect, useState } from 'react'
+import { View, Text, ScrollView } from 'react-native'
+import SelectItem from '../../components/SelectItem'
+import ApiService from '../../services/ApiService'
+import styles from './styles'
 
-import Card from '../../components/UserBookCard'
-import styles from './styles';
+const fruits = ['Apples', 'Oranges', 'Pears']
+// --- OR ---
+// const fruits = [
+//   { label: 'Apples', value: 'appls' },
+//   { label: 'Oranges', value: 'orngs' },
+//   { label: 'Pears', value: 'pears' }
+// ]
 
-const renderLabel = (label, style) => {
-    return (
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image style={{ width: 42, height: 42 }} source={{ uri: 'https://dummyimage.com/100x100/52c25a/fff&text=S' }} />
-            <View style={{ marginLeft: 10 }}>
-                <Text style={style}>{label}</Text>
-            </View>
-        </View>
-    )
-}
+const Collection = ({ navigation }) => {
 
 
-function Collection() {
 
-    const [selected, setSelected] = useState([])
+    const [list, setList] = useState([])
 
-    const books = [
-        {
-            label: "Titulo", value: {
-                title: "Titulo",
-                price: "R$ 50,00",
-                image: book
-            }
-        },
-        {
-            label: "Titulo", value: {
-                title: "Titulo",
-                price: "R$ 50,00",
-                image: book
-            }
-        },
-        {
-            label: "Titulo", value: {
-                title: "Titulo",
-                price: "R$ 50,00",
-                image: book
-            }
-        },
-        {
-            label: "Titulo", value: {
-                title: "Titulo",
-                price: "R$ 50,00",
-                image: book
-            }
-        },
-    ]
-
-    const onSelection = (selectedItems) => {
-        setSelected( old => [...old, selectedItems] )
-    }
-
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            ApiService.UserBookFind()
+                .then((res) => {
+                    console.log(res.data)
+                    setList(res.data)
+                })
+            
+        })
+        return unsubscribe
+    }, [navigation])
 
     return (
-        <View>
-            <View style={styles.titleView}>
-                <Text style={styles.title}>Acervo</Text>
+        <ScrollView style={{ backgroundColor: "#D11749" }}>
+            <View style={styles.textContainer}>
+                <Text style={styles.text}>Seu acervo</Text>
             </View>
-            <View>
-                <SelectMultiple
-                    items={books}
-                    renderLabel={renderLabel}
-                    selectedItems={selected}
-                    onSelectionsChange={onSelection} />
+            <View style={{ marginTop: 50, alignItems: "center" }}>
+                {list.map((item, key) => {
+                    return <SelectItem key={key} bookId={item.bookId} title={item.title} />
+                })}
             </View>
-        </View>
+        </ScrollView>
 
 
     )
-}
 
-export default Collection;
+}
+export default Collection

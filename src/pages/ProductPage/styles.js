@@ -64,13 +64,19 @@ export const Styles = StyleSheet.create({
         flexDirection:'row',
         flexWrap:'wrap',
         backgroundColor: '#D11749',
-        paddingLeft:22,
     },
 
     perfilImg: {
         width: 120, 
         height: 120, 
         resizeMode: 'cover' ,
+    },
+
+    transactionContainer: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
     },
 
     storeTitle: {
@@ -92,12 +98,10 @@ export const Styles = StyleSheet.create({
     },
 
     contactButton: {
-        flexDirection:'row',
-        marginLeft:135,
-        marginTop: -40,
-        marginBottom: 30,
+        marginHorizontal: 20,
+        marginBottom: 10,
         paddingHorizontal:10,
-        borderWidth: 0.5, 
+        borderWidth: 1.5, 
         borderRadius: 50,
         borderColor:'#fff',
 

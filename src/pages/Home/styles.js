@@ -59,6 +59,14 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderColor: '#dddd'
     },
+
+    productAlign: {
+        justifyContent: "flex-start",
+        alignItems: "center",
+        flexDirection: 'row',
+        flexWrap:'wrap',
+        marginLeft: 50
+    },
 })
 
 export default styles;

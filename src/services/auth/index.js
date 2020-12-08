@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import { AsyncStorage } from 'react-native'
 import api from '../api'
 
@@ -8,33 +8,10 @@ import AuthContext from './authContext'
 const AuthProvider = ({ children }) => {
     const [userId, setUserId] = useState(null)
     const [user, setUser] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [token, setToken] = useState(null)
 
-    useEffect(() => {
-        function loadStoragedData() {
-            const storagedToken = AsyncStorage.getItem('@TB:token')
-
-            if(storagedToken){
-                api.defaults.headers[
-                    'Authorization'
-                ] = `Bearer ${storagedToken}`;
-
-                ApiService.Me()
-                    .then(res => {
-                        setUserId(res.data.userId)
-                        setUser(res.data)
-                        setLoading(false)
-                    })
-                    .catch(setLoading(false))
-                
-            } else setLoading(false)
-        }
-        loadStoragedData()
-
-    }, [])
-
-    function Login(data) {
+    async function Login(data) {
         setLoading(true);
         return ApiService.SignIn(data)
             .then((res) => {
@@ -44,15 +21,16 @@ const AuthProvider = ({ children }) => {
                 setToken(res.data.token)
                 api.defaults.headers[
                     'Authorization'
-                ] = `Bearer ${token}`;
+                ] = `Bearer ${res.data.token}`;
 
-                AsyncStorage.setItem('@TB:token', token)
+                console.log(api.defaults.headers['Authorization'])
+
+                AsyncStorage.setItem('@TB:token', res.data.token)
                 setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
                 setLoading(false);
-                return Promise.reject(error);
             });
     }
 

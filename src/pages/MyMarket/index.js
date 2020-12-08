@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
 
 import styles from './styles';
@@ -6,64 +6,87 @@ import styles from './styles';
 import book from '../../assets/book.png';
 
 import Card from '../../components/ProductCard';
+import PrettyButton from '../../components/PrettyButton';
+
+import AuthContext from '../../services/auth/authContext'
+import { set } from 'react-native-reanimated';
+import ApiService from '../../services/ApiService';
+import ProductCard from '../../components/ProductCard';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+
+const MyMarket = ({ navigation }) => {
+
+    const { navigate } = useNavigation()
+
+    const [hasStore, setHasStore] = useState(false)
+
+    const { user } = useContext(AuthContext)
+    const [data, setData] = useState({})
+    const [announces, setAnnounces] = useState([{ title: "", price: 0, announceId: 0, description: "", type: "", storeId: 0 }])
+
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            ApiService.StoreFindByUser()
+                .then((res) => {
+                    console.log(res.data)
+                    setData(res.data)
+                    if (res.data.announces != null)
+                        setAnnounces(res.data.announces)
+                    console.log(res.data.announces)
+                })
+
+        })
+        return unsubscribe
+    }, [navigation])
 
 
-function MyMarket() {
 
-    const [list, setList] = React.useState([
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-    ])
+
 
     return (
-        <ScrollView>
-            <View style={{ backgroundColor: '#D11749', }}>
-                <View style={styles.header}>
-                    <Image style={styles.perfilImg}
-                        source={require('../../assets/Perfil1.png')} />
-                    <Text style={styles.marketTitle}>Nome da Loja</Text>
-                    <Text style={styles.description}>Descrição da Loja </Text>
-                    <Text style={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et</Text>
-                </View>
-                <View style={styles.productContainer}>
-                    <Text style={styles.productTitle}>Produtos</Text>
-                    <View>
-                        
+        <>
+            { data == "" ?
+                <View style={{ backgroundColor: '#D11749', flex: 1, alignItems: 'center', justifyContent: 'center' }} >
+                    <PrettyButton label="Criar Loja" onPress={() => navigate('RegisterStore')} />
+                </View > : <ScrollView>
+                    <View style={{ backgroundColor: '#D11749', }}>
+                        <View style={styles.header}>
+                            <Image style={styles.perfilImg}
+                                source={require('../../assets/Perfil1.png')} />
+                            <Text style={styles.marketTitle}>{data.name}</Text>
+                            <Text style={styles.description}>{data.description}</Text>
+                        </View>
+                        <View style={styles.productContainer}>
+                            <Text style={styles.productTitle}>Produtos</Text>
+
+                            <View style={styles.productAlign}>
+                                    {announces.map(
+                                        (item, key) => {
+                                            return <ProductCard
+                                                key={key}
+                                                announceId={item.announceId}
+                                                title={item.title}
+                                                price={item.price}
+                                                description={item.description}
+                                                type={item.type}
+                                                storeId={item.storeId}
+                                            />
+                                        }
+                                    )}
+                            </View>
+                        </View>
                     </View>
-                    <View style={styles.productAlign}>
-                        {list.map((product, key) => {
-                            return <Card key={key} title={product.title} type={product.type} price={product.price} image={product.image} />
-                        })}
-                    </View>
-                </View>
-            </View>
-        </ScrollView>
+                </ScrollView>
+            }
+        </>
+
+
+
 
     );
 }
+
+
 
 
 export default MyMarket;

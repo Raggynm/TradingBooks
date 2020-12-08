@@ -35,6 +35,7 @@ function Landing() {
                 >
                     <Text style={styles.textButtonb2}>Entre aqui</Text>
                 </TouchableOpacity>
+
             </View>
 
         </View>

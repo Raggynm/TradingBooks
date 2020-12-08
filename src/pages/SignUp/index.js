@@ -25,7 +25,7 @@ const Login = () => {
         .then(res => {
             console.log(res.data, res.status)
             setTimeout(()=>{
-                navigate('Login')
+                navigate('SignIn')
             }, 1000)
         })
         .catch(e => setApierror(e))

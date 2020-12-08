@@ -12,11 +12,33 @@ const ApiService = {
         return api.post('/Auths/login', body)
     },
 
-    Me: (body) => {
+    Me: () => {
         return api.get('/Auths/me')
-        .then(res => {return res})
-        .catch(e => {return Promise.reject(e)})
     },
+
+    UserBookRegister: (body) => {
+        return api.post('/Books/create', body)
+    },
+
+    StoreFindByUser: () => {
+        return api.get('Stores/FindByUser')
+    },
+
+    CreateStore: (body) => {
+        return api.post('Stores/Create', body)
+    },
+
+    UserBookFind: () => {
+        return api.get('Books/FindByUser')
+    },
+
+    AnnounceCreate: (body, bookId) => {
+        return api.post(`Announces/Create/${bookId}`, body)
+    },
+
+    Search: (search) => {
+        return api.get(`Announces/Search/${search}`)
+    }
     
 }
 

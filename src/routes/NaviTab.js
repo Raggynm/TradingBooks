@@ -102,7 +102,7 @@ function NaviTab() {
                     tabBarIcon: ({ color, size }) => {
                         return (
                             < AntDesign
-                                name="user"
+                                name="sharealt"
                                 size={size}
                                 color={color}
                             />
@@ -119,7 +119,7 @@ function NaviTab() {
                     tabBarIcon: ({ color, size }) => {
                         return (
                             < AntDesign
-                                name="user"
+                                name="book"
                                 size={size}
                                 color={color}
                             />

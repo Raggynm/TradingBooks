@@ -41,10 +41,10 @@ function SignIn() {
             email,
             password,
         };
-        Login(data).then(res => {
+        Login(data).then(() => {
             setTimeout(() => {
                 navigate('Home')
-            }, 1000)
+            }, 1500)
         })
 
     }
