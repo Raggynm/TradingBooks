@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, ScrollView, Button } from 'react-native';
 
 import styles from './styles';
@@ -7,54 +7,20 @@ import book from '../../assets/book.png';
 
 import Card from '../../components/ProductCard';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AuthContext from '../../services/auth/authContext';
 
 
 function UserProfile() {
 
-    const [list, setList] = React.useState([
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-        {
-            title: "Titulo",
-            price: "Valor ou Troca",
-            image: book
-        },
-    ])
-
+    const { user } = useContext(AuthContext)
+    
     return (
         <ScrollView>
             <View style={styles.profileContainer}>
                 <Image style={styles.perfilImg}
-                    source={require('../../assets/adriel.png')} />
-                <Text style={styles.productTitle}>Adriel</Text>
-                <View style={styles.infoContainer}>
-                    <View style={styles.infoItem}>
-                        <Text style={styles.info}>35</Text>
-                        <Text style={styles.infoText}>Transações</Text>
-                    </View>
-                    <View style={styles.infoItem}>
-                        <Text style={styles.info}>5/5</Text>
-                        <Text style={styles.infoText}>Avaliação Geral</Text>
-                    </View>
-                </View>
+                    source={require('../../assets/imagemperfil.png')} />
+                <Text style={styles.productTitle}>{user.username}</Text>
+                
                 <View style={{height: 75, width: 100}}>
                     <TouchableOpacity style={styles.buttonInfo}>
                         <View styles={styles.buttonInfoView}>

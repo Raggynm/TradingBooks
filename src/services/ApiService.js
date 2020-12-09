@@ -21,11 +21,11 @@ const ApiService = {
     },
 
     StoreFindByUser: () => {
-        return api.get('Stores/FindByUser')
+        return api.get('/Stores/FindByUser')
     },
 
     CreateStore: (body) => {
-        return api.post('Stores/Create', body)
+        return api.post('/Stores/Create', body)
     },
 
     UserBookFind: () => {
@@ -42,6 +42,26 @@ const ApiService = {
 
     CreateProposal: (body, announceId, userBookId) => {
         return api.post(`Announces/makeproposal/${announceId}/${userBookId}`, body)
+    },
+
+    ShowProposals: (announceId) => {
+        return api.get(`Announces/showproposals/${announceId}`)
+    },
+
+    AcceptProposal: (announceId, proposalId) => {
+        return api.delete(`Announces/acceptproposal/${proposalId}/${announceId}`)
+    },
+
+    RangomGet: () => {
+        return api.get('Announces/RandomGet')
+    },
+
+    ShowByRelevance: () => {
+        return api.get('Announces/ShowByTransactions')
+    },
+
+    FinishSell: (announceId) => {
+        return api.delete(`Announces/FinishSell/${announceId}`)
     }
     
 }

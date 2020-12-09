@@ -18,7 +18,7 @@ const RegisterBook = () => {
     })
 
     const onSubmit = ({ title, publisher, year, genre, isbn }) => {
-        year = Number(year)
+        year = parseInt(year)
         const data = {
             book: {
                 title,
@@ -84,6 +84,7 @@ const RegisterBook = () => {
                         label="Ano"
                         onBlur={onBlur}
                         value={value}
+                        type="numeric"
                         secure={false}
                     />
                 )}

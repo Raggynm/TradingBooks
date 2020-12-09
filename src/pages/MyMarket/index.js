@@ -58,6 +58,7 @@ const MyMarket = ({ navigation }) => {
                                 source={require('../../assets/Perfil1.png')} />
                             <Text style={styles.marketTitle}>{data.name}</Text>
                             <Text style={styles.description}>{data.description}</Text>
+                            <Text style={styles.description}>Marco: {data.achievement?.title}</Text>
                         </View>
                         <View style={styles.productContainer}>
                             <Text style={styles.productTitle}>Produtos</Text>

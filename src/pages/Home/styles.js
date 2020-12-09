@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 35,
         borderRadius: 10,
         margin: 40,
-        marginTop: 40,
+        marginTop: 70,
         justifyContent: "center",
         alignSelf: "center",
         position: "absolute",

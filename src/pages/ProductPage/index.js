@@ -5,6 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import styles from './styles';
 import AuthContext from '../../services/auth/authContext';
+import ApiService from '../../services/ApiService';
 
 
 function ProductPage({ navigation, route }) {
@@ -31,7 +32,12 @@ function ProductPage({ navigation, route }) {
     }, [route.params?.product])
 
     const handleSell = () => {
-        console.log("vendeu")
+        ApiService.FinishSell(product.announceId)
+            .then((res) => {
+                console.log(res)
+                navigate('Home')
+            })
+            .catch(e => console.log(e))
     }
 
     const handleTrade = () => {

@@ -35,8 +35,16 @@ const AuthProvider = ({ children }) => {
             });
     }
 
+    function Logout() {
+
+        AsyncStorage.clear();
+        api.defaults.headers['Authorization'] = null;
+        setUser(null);
+    }
+
+
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, Login, loading, storeId, setStoreId }}>
+        <AuthContext.Provider value={{ signed: !!user, user, Login, Logout, loading, storeId, setStoreId }}>
             {children}
         </AuthContext.Provider>
     )

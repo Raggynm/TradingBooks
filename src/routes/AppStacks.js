@@ -15,6 +15,7 @@ import RegisterStore from '../pages/RegisterStore';
 import MyMarket from '../pages/MyMarket';
 import CreateAnnounce from '../pages/CreateAnnounce';
 import MakeProposal from '../pages/MakeProposal';
+import Proposal from '../pages/Proposal';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function AppStack() {
                         <Screen name="RegisterStore" component={RegisterStore} />
                         <Screen name="CreateAnnounce" component={CreateAnnounce} />
                         <Screen name="MakeProposal" component={MakeProposal} />
+                        <Screen name="Proposal" component={Proposal} />
                     </>
                     :
                     <>

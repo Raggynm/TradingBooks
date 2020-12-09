@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View, Text, TextInput, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
@@ -10,13 +10,21 @@ import book from '../../assets/book.png';
 import Card from '../../components/ProductCard';
 import CreateButton from '../../components/CreateButton';
 import ApiService from '../../services/ApiService';
+import AuthContext from '../../services/auth/authContext';
 
-function Home() {
+function Home({ navigation }) {
 
     const { navigate } = useNavigation()
 
+    const { Logout } = useContext(AuthContext)
+
     const [search, setSearch] = useState("")
     const [list, setList] = React.useState([])
+
+    const [random, setRandom] = useState([])
+    const [relevance, setRelevance] = useState([])
+
+
 
     useEffect(() => {
         if (search != "")
@@ -30,10 +38,34 @@ function Home() {
     }, [search])
 
 
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            ApiService.ShowByRelevance()
+                .then(res => {
+                    setRelevance([])
+                    setRelevance(res.data)
+                })
+                .catch(e => console.log(e))
+
+        })
+        return unsubscribe
+    }, [navigation])
+    useEffect(() => {
+
+    }, [navigation])
+
+
 
 
     return (
         <View style={styles.container}>
+            <View style={{ marginTop: 50, marginLeft: 20, width: "100%" }}>
+                <TouchableOpacity onPress={() => Logout()}>
+                    <AntDesign name="arrowleft" size={20} color="black" />
+                </TouchableOpacity>
+
+            </View>
+
             <View style={styles.field} >
                 <View>
                     <AntDesign
@@ -45,7 +77,7 @@ function Home() {
                 </View>
                 <View>
                     <TextInput
-                        placeholder="Pesquise Livros, Autores ou Lojas!"
+                        placeholder="Pesquise por Anuncios!"
                         placeholderTextColor="white"
                         style={styles.input}
                         onChangeText={(input) => setSearch(input)}
@@ -66,7 +98,19 @@ function Home() {
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                
+                                {relevance.map(
+                                    (item, key) => {
+                                        return <Card
+                                            key={key}
+                                            announceId={item.announceId}
+                                            title={item.title}
+                                            price={item.price}
+                                            description={item.description}
+                                            type={item.type}
+                                            storeId={item.storeId}
+                                        />
+                                    }
+                                )}
 
                             </ScrollView>
                         </View>
@@ -74,14 +118,26 @@ function Home() {
 
                     <View style={{ flex: 1, paddingTop: 20 }} >
                         <Text style={styles.title}>
-                            Talvez você se interesse por...
+                            Anuncios mais relevantes
                 </Text>
 
                         <View style={{ height: 200, marginTop: 20 }}>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                
+                                {relevance.map(
+                                    (item, key) => {
+                                        return <Card
+                                            key={key}
+                                            announceId={item.announceId}
+                                            title={item.title}
+                                            price={item.price}
+                                            description={item.description}
+                                            type={item.type}
+                                            storeId={item.storeId}
+                                        />
+                                    }
+                                )}
 
                             </ScrollView>
                         </View>
