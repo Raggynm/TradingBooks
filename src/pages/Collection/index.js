@@ -12,11 +12,24 @@ const fruits = ['Apples', 'Oranges', 'Pears']
 //   { label: 'Pears', value: 'pears' }
 // ]
 
-const Collection = ({ navigation }) => {
+const Collection = ({ route, navigation }) => {
 
 
 
     const [list, setList] = useState([])
+    const [type, setType] = useState("announce")
+    const [announceId, setAnnounceId] = useState(0)
+
+    useEffect(() => {
+        if(route.params?.type === "proposal"){
+            setType("proposal")
+            setAnnounceId(route.params?.announceId)
+        }
+        else
+        setType("announce")
+
+        console.log(route.params?.type)
+    }, [route.params?.type])
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -37,7 +50,7 @@ const Collection = ({ navigation }) => {
             </View>
             <View style={{ marginTop: 50, alignItems: "center" }}>
                 {list.map((item, key) => {
-                    return <SelectItem key={key} bookId={item.bookId} title={item.title} />
+                    return <SelectItem key={key} type={type} announceId={announceId} bookId={item.bookId} title={item.title} />
                 })}
             </View>
         </ScrollView>

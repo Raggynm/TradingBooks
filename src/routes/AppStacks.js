@@ -14,6 +14,7 @@ import AuthContext from '../services/auth/authContext';
 import RegisterStore from '../pages/RegisterStore';
 import MyMarket from '../pages/MyMarket';
 import CreateAnnounce from '../pages/CreateAnnounce';
+import MakeProposal from '../pages/MakeProposal';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -34,6 +35,7 @@ export default function AppStack() {
                         <Screen name="RegisterBook" component={RegisterBook} />
                         <Screen name="RegisterStore" component={RegisterStore} />
                         <Screen name="CreateAnnounce" component={CreateAnnounce} />
+                        <Screen name="MakeProposal" component={MakeProposal} />
                     </>
                     :
                     <>

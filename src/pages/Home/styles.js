@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
     },
 
     productAlign: {
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         flexDirection: 'row',
         flexWrap:'wrap',
-        marginLeft: 50
+        width: "100%"
     },
 })
 

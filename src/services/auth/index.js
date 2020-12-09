@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(false)
     const [token, setToken] = useState(null)
+    const [storeId, setStoreId] = useState(null)
 
     async function Login(data) {
         setLoading(true);
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ signed: !!user, user, Login, loading }}>
+        <AuthContext.Provider value={{ signed: !!user, user, Login, loading, storeId, setStoreId }}>
             {children}
         </AuthContext.Provider>
     )

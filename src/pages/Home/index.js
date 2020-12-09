@@ -22,7 +22,9 @@ function Home() {
         if (search != "")
             ApiService.Search(search)
                 .then(res => {
+                    setList([])
                     setList(res.data)
+                    console.log(res.data)
                 })
                 .catch(e => console.log(e))
     }, [search])
@@ -64,9 +66,7 @@ function Home() {
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                {list.map((product, key) => {
-                                    return <Card key={key} title={product.title} type={product.type} price={product.price} image={product.image} />
-                                })}
+                                
 
                             </ScrollView>
                         </View>
@@ -81,9 +81,7 @@ function Home() {
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                {list.map((product, key) => {
-                                    return <Card key={key} title={product.title} type={product.type} price={product.price} image={product.image} />
-                                })}
+                                
 
                             </ScrollView>
                         </View>
@@ -100,9 +98,19 @@ function Home() {
 
                     </View>
                     <View style={styles.productAlign}>
-                        {list.map((product, key) => {
-                            return <Card key={key} title={product.title} type={product.type} price={product.price} image={product.image} announceId={product.announceId} />
-                        })}
+                        {list.map(
+                            (item, key) => {
+                                return <Card
+                                    key={key}
+                                    announceId={item.announceId}
+                                    title={item.title}
+                                    price={item.price}
+                                    description={item.description}
+                                    type={item.type}
+                                    storeId={item.storeId}
+                                />
+                            }
+                        )}
                     </View>
 
                 </ScrollView>

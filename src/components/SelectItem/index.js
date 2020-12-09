@@ -8,10 +8,22 @@ const SelectItem = (props) => {
 
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const [bookId, setBookId] = useState(props.bookId)
+    const [type, setType] = useState(props.type)
+    const [announceId, setAnnounceId] = useState(props.announceId)
 
     const { navigate } = useNavigation()
 
     const handlePress = () => {
+        if(type === "proposal")
+        navigate('MakeProposal',
+        {
+            book: {
+                announceId,
+                bookId,
+                title: props.title
+            }
+        })
+        else
         navigate('CreateAnnounce', {
             book: {
                 bookId: props.bookId,

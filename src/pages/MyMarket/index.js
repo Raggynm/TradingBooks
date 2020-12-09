@@ -20,9 +20,11 @@ const MyMarket = ({ navigation }) => {
 
     const [hasStore, setHasStore] = useState(false)
 
-    const { user } = useContext(AuthContext)
+
+
+    const { user, setStoreId } = useContext(AuthContext)
     const [data, setData] = useState({})
-    const [announces, setAnnounces] = useState([{ title: "", price: 0, announceId: 0, description: "", type: "", storeId: 0 }])
+    const [announces, setAnnounces] = useState([])
 
     useEffect(() => {
         const unsubscribe = navigation.addListener('focus', () => {
@@ -32,7 +34,8 @@ const MyMarket = ({ navigation }) => {
                     setData(res.data)
                     if (res.data.announces != null)
                         setAnnounces(res.data.announces)
-                    console.log(res.data.announces)
+                    if (res.data.storeId != null)
+                        setStoreId(res.data.storeId)
                 })
 
         })
@@ -60,19 +63,19 @@ const MyMarket = ({ navigation }) => {
                             <Text style={styles.productTitle}>Produtos</Text>
 
                             <View style={styles.productAlign}>
-                                    {announces.map(
-                                        (item, key) => {
-                                            return <ProductCard
-                                                key={key}
-                                                announceId={item.announceId}
-                                                title={item.title}
-                                                price={item.price}
-                                                description={item.description}
-                                                type={item.type}
-                                                storeId={item.storeId}
-                                            />
-                                        }
-                                    )}
+                                {announces.map(
+                                    (item, key) => {
+                                        return <ProductCard
+                                            key={key}
+                                            announceId={item.announceId}
+                                            title={item.title}
+                                            price={item.price}
+                                            description={item.description}
+                                            type={item.type}
+                                            storeId={item.storeId}
+                                        />
+                                    }
+                                )}
                             </View>
                         </View>
                     </View>

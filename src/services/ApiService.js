@@ -38,6 +38,10 @@ const ApiService = {
 
     Search: (search) => {
         return api.get(`Announces/Search/${search}`)
+    },
+
+    CreateProposal: (body, announceId, userBookId) => {
+        return api.post(`Announces/makeproposal/${announceId}/${userBookId}`, body)
     }
     
 }

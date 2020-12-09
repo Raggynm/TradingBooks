@@ -1,17 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
 import styles from './styles';
+import AuthContext from '../../services/auth/authContext';
 
 
 function ProductPage({ navigation, route }) {
+
+    const { storeId } = useContext(AuthContext)
 
     const [image, setImage] = useState(require('../../assets/book.png'))
     const [product, setProduct] = useState({})
     const [blur, setBlur] = useState(0)
     const [type, setType] = useState("")
+
+    const { navigate } = useNavigation()
 
     const handleScroll = (event) => {
         let blurUp = event.nativeEvent.contentOffset.y / 100
@@ -30,7 +35,10 @@ function ProductPage({ navigation, route }) {
     }
 
     const handleTrade = () => {
-        console.log("ofereceu")
+        navigate('Collection', {
+            type: "proposal",
+            announceId: product.announceId
+        })
     }
 
 
@@ -50,31 +58,37 @@ function ProductPage({ navigation, route }) {
                         <Text style={styles.productTitle}>{product.title}</Text>
                         <Text style={styles.productSubTitle}>R$ {parseFloat(product.price).toFixed(2)}</Text>
                         <Text style={styles.line} />
-    <Text style={styles.description}>{product.description}</Text>
+                        <Text style={styles.description}>{product.description}</Text>
                         <Text style={styles.line} />
                     </View>
                     <View style={styles.footer}>
-                        
-                        <View style={styles.transactionContainer}>
-                            {
-                                type.includes("sell") ?
-                                    < TouchableOpacity style={styles.contactButton} onPress={handleSell} >
-                                        <Text style={styles.contactTitle}>Comprar</Text>
-                                    </TouchableOpacity >
-                                    :
-                                    <>
-                                    </>
-                            }
-                            {
-                                type.includes("trade") ?
-                                    < TouchableOpacity style={styles.contactButton} onPress={handleTrade} >
-                                        <Text style={styles.contactTitle}>Oferecer</Text>
-                                    </TouchableOpacity >
-                                    :
-                                    <>
-                                    </>
-                            }
-                        </View>
+                        {storeId === product.storeId ?
+                            <></>
+                            :
+                            <View style={styles.transactionContainer}>
+                                {
+                                    type.includes("sell") ?
+                                        < TouchableOpacity style={styles.contactButton} onPress={handleSell} >
+                                            <Text style={styles.contactTitle}>Comprar</Text>
+                                        </TouchableOpacity >
+                                        :
+                                        <>
+                                        </>
+                                }
+                                {
+                                    type.includes("trade") ?
+                                        < TouchableOpacity style={styles.contactButton} onPress={handleTrade} >
+                                            <Text style={styles.contactTitle}>Oferecer</Text>
+                                        </TouchableOpacity >
+                                        :
+                                        <>
+                                        </>
+                                }
+                            </View>
+
+
+                        }
+
 
                     </View>
                 </View>
